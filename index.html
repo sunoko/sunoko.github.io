@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Family Video Archive</title>
+
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #111;
+      color: white;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #222;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .card img {
+      width: 100%;
+      display: block;
+    }
+
+    .card-content {
+      padding: 10px;
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .year {
+      color: #aaa;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Family Video Archive</h1>
+
+  <div class="grid">
+
+    <div class="card">
+      <a href="https://youtu.be/YOUTUBE_ID" target="_blank">
+        <img src="https://img.youtube.com/vi/YOUTUBE_ID/hqdefault.jpg">
+        <div class="card-content">
+          <h3>2003 夏旅行</h3>
+          <div class="year">2003年</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="card">
+      <a href="https://youtu.be/YOUTUBE_ID2" target="_blank">
+        <img src="https://img.youtube.com/vi/YOUTUBE_ID2/hqdefault.jpg">
+        <div class="card-content">
+          <h3>運動会</h3>
+          <div class="year">2005年</div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+
+</body>
+</html>
