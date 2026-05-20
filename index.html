@@ -7,11 +7,11 @@
 
   <style>
     body {
-      font-family: sans-serif;
-      background: #111;
-      color: white;
       margin: 0;
       padding: 20px;
+      background: #111;
+      color: white;
+      font-family: sans-serif;
     }
 
     h1 {
@@ -26,8 +26,13 @@
 
     .card {
       background: #222;
-      border-radius: 10px;
+      border-radius: 12px;
       overflow: hidden;
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
     }
 
     .card img {
@@ -35,18 +40,18 @@
       display: block;
     }
 
-    .card-content {
-      padding: 10px;
-    }
-
-    a {
-      color: white;
-      text-decoration: none;
+    .content {
+      padding: 12px;
     }
 
     .year {
       color: #aaa;
       font-size: 14px;
+    }
+
+    a {
+      text-decoration: none;
+      color: white;
     }
   </style>
 </head>
@@ -54,29 +59,36 @@
 
   <h1>Family Video Archive</h1>
 
-  <div class="grid">
+  <div class="grid" id="videoGrid"></div>
 
-    <div class="card">
-      <a href="https://youtu.be/YOUTUBE_ID" target="_blank">
-        <img src="https://img.youtube.com/vi/YOUTUBE_ID/hqdefault.jpg">
-        <div class="card-content">
-          <h3>2003 夏旅行</h3>
-          <div class="year">2003年</div>
-        </div>
-      </a>
-    </div>
+  <script>
+    fetch('videos.json')
+      .then(response => response.json())
+      .then(videos => {
 
-    <div class="card">
-      <a href="https://youtu.be/YOUTUBE_ID2" target="_blank">
-        <img src="https://img.youtube.com/vi/YOUTUBE_ID2/hqdefault.jpg">
-        <div class="card-content">
-          <h3>運動会</h3>
-          <div class="year">2005年</div>
-        </div>
-      </a>
-    </div>
+        const grid = document.getElementById('videoGrid');
 
-  </div>
+        videos.forEach(video => {
+
+          const card = document.createElement('div');
+          card.className = 'card';
+
+          card.innerHTML = `
+            <a href="https://youtu.be/${video.youtubeId}" target="_blank">
+              <img src="https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg">
+              <div class="content">
+                <h3>${video.title}</h3>
+                <div class="year">${video.year}</div>
+              </div>
+            </a>
+          `;
+
+          grid.appendChild(card);
+
+        });
+
+      });
+  </script>
 
 </body>
 </html>
