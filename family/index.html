@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Family Video Archive</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #111;
+      color: white;
+      font-family: sans-serif;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #222;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+    }
+
+    .card img {
+      width: 100%;
+      display: block;
+    }
+
+    .content {
+      padding: 12px;
+    }
+
+    .year {
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Family Video Archive</h1>
+
+  <div class="grid" id="videoGrid"></div>
+
+  <script>
+    fetch('videos.json')
+      .then(response => response.json())
+      .then(videos => {
+
+        const grid = document.getElementById('videoGrid');
+
+        videos.forEach(video => {
+
+          const card = document.createElement('div');
+          card.className = 'card';
+
+          card.innerHTML = `
+            <a href="https://youtu.be/${video.youtubeId}" target="_blank">
+              <img src="https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg">
+              <div class="content">
+                <h3>${video.title}</h3>
+                <div class="year">${video.year}</div>
+              </div>
+            </a>
+          `;
+
+          grid.appendChild(card);
+
+        });
+
+      });
+  </script>
+
+</body>
+</html>
