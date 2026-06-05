@@ -18,6 +18,25 @@
       margin-bottom: 30px;
     }
 
+    .nav {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      background: #333;
+      padding: 10px 14px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: white;
+    }
+
+    .nav a:hover {
+      background: #444;
+    }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -57,7 +76,13 @@
 </head>
 <body>
 
-  <h1>Family Video Archive</h1>
+  <h1>Kazuki & Hitomi Video Archive</h1>
+
+  <nav class="nav">
+    <a href="/">Kazuki & Ayumi</a>
+    <a href="/kazuki_hitomi/">Kazuki & Hitomi</a>
+    <a href="/hitomi/">Hitomi</a>
+  </nav>
 
   <div class="grid" id="videoGrid"></div>
 
@@ -74,7 +99,7 @@
           card.className = 'card';
 
           card.innerHTML = `
-            <a href="https://youtu.be/${video.youtubeId}" target="_blank">
+            <a href="https://youtu.be/${video.youtubeId}" target="_blank" rel="noopener noreferrer">
               <img src="https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg">
               <div class="content">
                 <h3>${video.title}</h3>
